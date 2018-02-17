@@ -8,15 +8,10 @@ To install this library, run:
 $ npm install clark-tooltip --save
 ```
 
-## Consuming your library
+## Using
 
-Once you have published your library to npm, you can import your library in any Angular application by running:
 
-```bash
-$ npm install clark-tooltip
-```
-
-and then from your Angular `AppModule`:
+From your Angular `AppModule`:
 
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,8 +19,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-// Import your library
-import { SampleModule } from 'clark-tooltip';
+// Import module
+import { TooltipModule } from 'clark-tooltip';
 
 @NgModule({
   declarations: [
@@ -34,8 +29,8 @@ import { SampleModule } from 'clark-tooltip';
   imports: [
     BrowserModule,
 
-    // Specify your library as an import
-    LibraryModule
+    // Specify as an import
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -43,14 +38,17 @@ import { SampleModule } from 'clark-tooltip';
 export class AppModule { }
 ```
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
-
+These are all the directive options below:
 ```xml
-<!-- You can now use your library component in app.component.html -->
+<!-- You can now use in any component like so -->
 <h1>
-  {{title}}
+  Welcome to <span tip = "This is the name of my site" tipLocation="above">{{strangeTitle}}</span>!
 </h1>
-<sampleComponent></sampleComponent>
+
+<p tip = "It will all make sense soon">Confusing paragraph</p>
+
+<button tip = "Click me!" tipLocation="side">Mysterious Button</button>
+
 ```
 
 ## Development
@@ -59,12 +57,6 @@ To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
 
 ```bash
 $ npm run build
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
 ```
 
 ## License
