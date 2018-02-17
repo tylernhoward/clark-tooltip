@@ -1,4 +1,5 @@
 # clark-tooltip
+Basic tooltip directive to be used in CLARK system.
 
 ## Installation
 
@@ -42,12 +43,12 @@ These are all the directive options below:
 ```xml
 <!-- You can now use in any component like so -->
 <h1>
-  Welcome to <span tip = "This is the name of my site" tipLocation="above">{{strangeTitle}}</span>!
+  Welcome to <span tip="This is the name of my site" tipLocation="above">{{strangeTitle}}</span>!
 </h1>
 
-<p tip = "It will all make sense soon">Confusing paragraph</p>
+<p tip="It will all make sense soon">Confusing paragraph</p>
 
-<button tip = "Click me!" tipLocation="side">Mysterious Button</button>
+<button tip="Click me!" tipLocation="side">Mysterious Button</button>
 
 ```
 
@@ -61,4 +62,4 @@ $ npm run build
 
 ## License
 
-MIT © [Tyler Howard](mailto:tylernhoward@gmail.com)
+MIT © Tyler Howard
