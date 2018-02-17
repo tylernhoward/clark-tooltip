@@ -1,0 +1,31 @@
+{
+  "name": "clark-tooltip",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tylernhoward/clark-tooltip"
+  },
+  "author": {
+    "name": "Tyler Howard",
+    "email": "tylernhoward@gmail.com"
+  },
+  "keywords": [
+    "angular",
+    "clark",
+    "angular2",
+    "tooltip"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylernhoward/clark-tooltip/issues"
+  },
+  "main": "clark-tooltip.umd.js",
+  "module": "clark-tooltip.js",
+  "jsnext:main": "clark-tooltip.js",
+  "typings": "clark-tooltip.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
