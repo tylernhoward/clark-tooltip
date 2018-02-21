@@ -1,4 +1,5 @@
 # clark-tooltip
+
 Basic tooltip directive to be used in CLARK system.
 
 ## Installation
@@ -10,7 +11,6 @@ $ npm install clark-tooltip --save
 ```
 
 ## Using
-
 
 From your Angular `AppModule`:
 
@@ -29,7 +29,6 @@ import { TooltipModule } from 'clark-tooltip';
   ],
   imports: [
     BrowserModule,
-
     // Specify as an import
     TooltipModule
   ],
@@ -46,11 +45,12 @@ These are all the directive options below:
   Welcome to <span tip="This is the name of my site" tipLocation="above">{{strangeTitle}}</span>!
 </h1>
 
-<p tip="It will all make sense soon">Confusing paragraph</p>
+<p>Confusing sentence with <span tip="This is the name of my site" tipLocation="above">words</span></p>
 
 <button tip="Click me!" tipLocation="side">Mysterious Button</button>
 
 ```
+Make sure to place within an inline element of some sort. <span>s are your friend.
 
 ## Development
 
