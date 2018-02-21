@@ -30,8 +30,7 @@ export class TooltipComponent implements AfterViewInit, OnInit {
     this.el = this.elementRef.nativeElement.children[0];
     this.displayTip();
     this.cdr.detectChanges();
-    //console.log("Position: " + this.x + "," + this.y);
-  }
+   }
 
   /*
   * Called after view initialized
@@ -67,7 +66,7 @@ export class TooltipComponent implements AfterViewInit, OnInit {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     let scrollY = window.pageYOffset;
- 
+    
     if (location === "side"){
       x = this.parent.getBoundingClientRect().left + this.parent.offsetWidth + offsetConst;
       y = (this.parent.getBoundingClientRect().top + scrollY) + this.parent.offsetHeight / 2 - this.el.clientHeight / 2;
