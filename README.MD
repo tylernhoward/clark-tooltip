@@ -50,7 +50,7 @@ These are all the directive options below:
 <button tip="Click me!" tipLocation="side">Mysterious Button</button>
 
 ```
-Make sure to place within an inline element of some sort. <span>s are your friend.
+Make sure to place within an inline element of some sort. Spans are your friend.
 
 ## Development
 
