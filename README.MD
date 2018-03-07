@@ -45,9 +45,9 @@ These are all the directive options below:
   Welcome to <span tip="This is the name of my site" tipLocation="above">{{strangeTitle}}</span>!
 </h1>
 
-<p>Confusing sentence with <span tip="This is the name of my site" tipLocation="above">words</span></p>
+<p>Confusing sentence with <span tip="This is a word" tipLocation="above">words</span></p>
 
-<button tip="Click me!" tipLocation="side">Mysterious Button</button>
+<button tip="Click me!" tipLocation="side" tipDelay="1000">Mysterious Button with 1 second delay</button>
 
 ```
 Make sure to place within an inline element of some sort. Spans are your friend.

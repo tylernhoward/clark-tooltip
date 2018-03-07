@@ -7,6 +7,7 @@ import { TooltipComponent } from './tooltip.component';
 export class TipDirective {
   @Input('tip') text: string;
   @Input() tipLocation: string;
+  @Input() tipDelay: number;
 
   parent: HTMLElement;
   tooltip: ComponentRef<TooltipComponent>;
@@ -14,16 +15,28 @@ export class TipDirective {
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef) {
           this.parent = this.viewContainerRef.element.nativeElement;
+          this.isShown = false;
+          this.tipDelay ? this.tipDelay = this.tipDelay : this.tipDelay = 0;
   }
   
   /*
   * Method triggered on hover
-  * Builds tooltip component from a component factory and sets inputs to component
+  * Waits for delay and sets props to tip
   */
   @HostListener("mouseenter")
   showTip(){
-    //TODO: Include checks with isShown variable
-    this.isShown = true;
+    if(this.isShown === false){
+      setTimeout(() => {
+        this.isShown = true;
+        this.setProps();
+      }, this.tipDelay);
+    }
+  }
+  /*
+  * Helper Method
+  * Builds tooltip component from a component factory and sets inputs to component
+  */
+  setProps(){
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(TooltipComponent);
     this.tooltip = this.viewContainerRef.createComponent(componentFactory);
     this.tooltip.instance.parent = this.parent;
@@ -31,14 +44,17 @@ export class TipDirective {
     this.tooltip.instance.text = this.text;
   }
 
+
   /*
   * Method triggered on focus lost
   * Destroys instance of tooltip component
   */
+  @HostListener("window:scroll", ['$event'])
   @HostListener("mouseleave")
-  hideTip(){
-    //TODO: Include checks with isShown variable
-    this.isShown = false;
-    this.tooltip.destroy();
+  hideTip(event) {
+    if (this.isShown === true) {
+      this.isShown = false;
+      this.tooltip.destroy();
+    }
   }
 }

@@ -3,8 +3,11 @@ import { Component, OnInit, AfterViewInit, Input, ElementRef, ChangeDetectorRef 
 @Component({
   selector: 'app-tooltip',
   template: `
-    <div class = "tooltip" [attr.class]="'tooltip ' + class" [ngStyle]="{'left': x, 'top': y}">
-      <p>{{text}}</p>
+    <div class = "tooltip" [attr.class]="'tooltip fade ' + class" [ngStyle]="{'left': x, 'top': y}">
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-inner">
+        {{text}}
+      </div>
     </div>
   `,
   styleUrls: ['./tooltip.component.scss']
@@ -47,9 +50,9 @@ export class TooltipComponent implements AfterViewInit, OnInit {
   */
   private assignClass(location: string){
     if (location ==="side"){
-      this.class = location;
+      this.class = "right";
     } else if (location === "above"){
-      this.class = location;
+      this.class = "top";
     } else {
       console.log("Bad location for tooltip! Try 'above' or 'side'.")
     }
