@@ -1,6 +1,6 @@
 {
-  "name": "clark-tooltip",
-  "version": "0.1.0",
+  "name": "@cyber4all/clark-tooltip",
+  "version": "0.2.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/tylernhoward/clark-tooltip"

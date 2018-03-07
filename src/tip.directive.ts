@@ -25,10 +25,12 @@ export class TipDirective {
   */
   @HostListener("mouseenter")
   showTip(){
-    if(this.isShown === false){
+    if (this.isShown === false) {
+      this.isShown=true;
       setTimeout(() => {
-        this.isShown = true;
-        this.setProps();
+        if(this.isShown===true){
+          this.setProps();
+        }
       }, this.tipDelay);
     }
   }
