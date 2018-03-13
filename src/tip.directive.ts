@@ -12,7 +12,8 @@ export class TipDirective {
   parent: HTMLElement;
   tooltip: ComponentRef<TooltipComponent>;
   isShown: boolean;
-
+  isHover: boolean;
+  timeout:any;
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef) {
           this.parent = this.viewContainerRef.element.nativeElement;
           this.isShown = false;
@@ -26,12 +27,13 @@ export class TipDirective {
   @HostListener("mouseenter")
   showTip(){
     if (this.isShown === false) {
-      this.isShown=true;
+      this.isHover = true;
+    this.timeout = 
       setTimeout(() => {
-        if(this.isShown===true){
-          this.setProps();
-        }
-      }, this.tipDelay);
+            if(this.isHover===true){
+              this.setProps();
+            }
+          }, this.tipDelay);
     }
   }
   /*
@@ -44,6 +46,7 @@ export class TipDirective {
     this.tooltip.instance.parent = this.parent;
     this.tooltip.instance.location = this.tipLocation;
     this.tooltip.instance.text = this.text;
+    this.isShown = true;
   }
 
 
@@ -54,9 +57,11 @@ export class TipDirective {
   @HostListener("window:scroll", ['$event'])
   @HostListener("mouseleave")
   hideTip(event) {
+    this.isHover = false;
+    clearTimeout(this.timeout);
     if (this.isShown === true) {
-      this.isShown = false;
       this.tooltip.destroy();
+      this.isShown = false;
     }
   }
 }
