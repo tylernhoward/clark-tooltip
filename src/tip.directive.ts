@@ -36,6 +36,7 @@ export class TipDirective {
           }, this.tipDelay);
     }
   }
+  
   /*
   * Helper Method
   * Builds tooltip component from a component factory and sets inputs to component
