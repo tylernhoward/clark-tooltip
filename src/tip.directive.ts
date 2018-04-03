@@ -8,7 +8,7 @@ export class TipDirective {
   @Input('tip') text: string;
   @Input() tipLocation: string;
   @Input() tipDelay: number;
-
+  @Input() tipDisabled: string;
   parent: HTMLElement;
   tooltip: ComponentRef<TooltipComponent>;
   isShown: boolean;
@@ -17,7 +17,7 @@ export class TipDirective {
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef) {
           this.parent = this.viewContainerRef.element.nativeElement;
           this.isShown = false;
-          this.tipDelay ? this.tipDelay = this.tipDelay : this.tipDelay = 0;
+          if(!this.tipDelay) this.tipDelay = 0;
   }
   
   /*
@@ -26,15 +26,18 @@ export class TipDirective {
   */
   @HostListener("mouseenter")
   showTip(){
-    if (this.isShown === false) {
-      this.isHover = true;
-    this.timeout = 
-      setTimeout(() => {
-            if(this.isHover===true){
+    if(this.tipDisabled == "false"){
+      if (this.isShown === false) {
+        this.isHover = true;
+        this.timeout =
+          setTimeout(() => {
+            if (this.isHover === true) {
               this.setProps();
             }
           }, this.tipDelay);
+      }
     }
+    
   }
   
   /*
