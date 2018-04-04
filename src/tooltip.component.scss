@@ -11,6 +11,23 @@ $light: #FEFEFE;
     position: fixed;
     z-index: 1;
     display: block;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: left;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal; 
+    //overflow-wrap: break-word;
+    word-spacing: normal;
+    word-wrap: break-word;
+    white-space: normal;
+    line-break: auto;
     opacity: 0.95;
     animation: fadein 0.6s;
     @keyframes fadein {
@@ -129,22 +146,11 @@ $light: #FEFEFE;
         padding: 8px;
         text-align: center;
         border-radius: 4px;
-         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-         font-size: 12px;
-         font-style: normal;
-         font-weight: normal;
-         line-height: 1.42857143;
-         text-align: left;
-         text-align: start;
-         text-decoration: none;
-         text-shadow: none;
-         text-transform: none;
-         letter-spacing: normal;
-         word-break: normal; //overflow-wrap: break-word;
-         word-spacing: normal;
-         word-wrap: break-word;
-         white-space: normal;
-         line-break: auto;
+        // .tooltip-title {
+        //     padding-bottom: 1px;
+        //     margin-bottom:1px;
+        //     border-bottom: 1px solid rgba(0, 0, 0, .2);
+        // }
     }
     .tooltip-arrow {
         position: absolute;

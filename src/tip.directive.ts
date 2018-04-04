@@ -1,14 +1,19 @@
+import { Tip } from './tip';
 import { Directive, ComponentFactoryResolver, ViewContainerRef, Input, HostListener, ComponentRef } from '@angular/core';
 import { TooltipComponent } from './tooltip.component';
-
 @Directive({
   selector: '[tip]'
 })
+
 export class TipDirective {
-  @Input('tip') text: string;
+  @Input('tip') tip: string;
+  @Input() tipTitle: string;
   @Input() tipLocation: string;
   @Input() tipDelay: number;
-  @Input() tipDisabled: string;
+  @Input() tipDisabled: string = "false";
+  @Input() tipTheme: string;
+  //text: string;
+  //title: string;
   parent: HTMLElement;
   tooltip: ComponentRef<TooltipComponent>;
   isShown: boolean;
@@ -17,7 +22,6 @@ export class TipDirective {
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef) {
           this.parent = this.viewContainerRef.element.nativeElement;
           this.isShown = false;
-          if(!this.tipDisabled) this.tipDisabled = "false";
           if(!this.tipDelay) this.tipDelay = 0;
   }
   
@@ -45,12 +49,23 @@ export class TipDirective {
   * Helper Method
   * Builds tooltip component from a component factory and sets inputs to component
   */
+  // TODO: Update to take a tip object
   setProps(){
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(TooltipComponent);
     this.tooltip = this.viewContainerRef.createComponent(componentFactory);
     this.tooltip.instance.parent = this.parent;
     this.tooltip.instance.location = this.tipLocation;
-    this.tooltip.instance.text = this.text;
+    this.tooltip.instance.theme = this.tipTheme;
+    this.tooltip.instance.text = this.tip;
+    this.tooltip.instance.title = this.tipTitle;
+    // this.tip = JSON.parse(this.tip);
+    // console.log(typeof this.tip)
+    // if (this.tip instanceof Tip){
+    //     this.tooltip.instance.title = this.tip.title;
+    //     this.tooltip.instance.text =this.tip.text
+    // } else {
+    //     this.tooltip.instance.text = this.tip;
+    // }
     this.isShown = true;
   }
 

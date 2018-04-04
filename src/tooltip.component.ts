@@ -3,9 +3,10 @@ import { Component, OnInit, AfterViewInit, Input, ElementRef, ChangeDetectorRef 
 @Component({
   selector: 'app-tooltip',
   template: `
-    <div class = "tooltip" [attr.class]="'tooltip fade ' + class" [ngStyle]="{'left': x, 'top': y}">
+    <div class = "tooltip" [attr.class]="'tooltip ' + class" [ngStyle]="{'left': x, 'top': y}">
       <div class="tooltip-arrow"></div>
       <div class="tooltip-inner">
+        <h5 *ngIf = "title" class = "tooltip-title">{{title}}</h5>
         {{text}}
       </div>
     </div>
@@ -13,9 +14,12 @@ import { Component, OnInit, AfterViewInit, Input, ElementRef, ChangeDetectorRef 
   styleUrls: ['./tooltip.component.scss']
 })
 export class TooltipComponent implements AfterViewInit, OnInit {
+  @Input() title: string;
   @Input() text: string;
   @Input() parent: HTMLElement;
   @Input() location: string;
+  @Input() theme: string;
+  validThemes: Array<string> = ["dark","light","good","bad","neutral"];
   class: string;
   el: HTMLElement;
   position: Position;
@@ -51,14 +55,16 @@ export class TooltipComponent implements AfterViewInit, OnInit {
   // TODO: Deprecate side and above tags
 
   private assignClass(location: string){
+    if(!this.theme && !(this.validThemes.indexOf(this.theme) > -1)) this.theme = "dark";
+
     if (location ==="right" || location === "side"){
-      this.class = "right";
+      this.class = this.theme + " right";
     } else if (location === "left"){
-      this.class = "left";
+      this.class = this.theme + " left";
     } else if (location === "top" || location === "above" ) {
-      this.class = "top";
+      this.class = this.theme + " top";
     } else if (location === "bottom") {
-      this.class = "bottom";
+      this.class = this.theme + " bottom";
     }
     else {
       console.log("Bad location for tooltip! Try 'top', 'bottom', 'right', or 'left'.")
