@@ -1,6 +1,6 @@
 {
   "name": "@cyber4all/clark-tooltip",
-  "version": "0.2.3",
+  "version": "0.5.0",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
