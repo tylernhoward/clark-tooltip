@@ -17,6 +17,7 @@ export class TipDirective {
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private viewContainerRef: ViewContainerRef) {
           this.parent = this.viewContainerRef.element.nativeElement;
           this.isShown = false;
+          if(!this.tipDisabled) this.tipDisabled = "false";
           if(!this.tipDelay) this.tipDelay = 0;
   }
   
