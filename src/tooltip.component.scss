@@ -7,6 +7,10 @@ $red: #cf4739;
 $blue: #3b608b;
 $light: #FEFEFE;
 
+:host {
+    position: fixed;
+}
+
 .tooltip {
     position: fixed;
     z-index: 1;
